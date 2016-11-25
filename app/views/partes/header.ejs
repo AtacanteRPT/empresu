@@ -1,0 +1,23 @@
+<nav>
+  <div class="ui  menu">
+    <div class="ui container">
+      <a class="item" href="/"><i class="home icon"></i>Empresu</a>
+      <div class="right menu">
+        <%if (!estaAutentificado){ %>
+          <a class="item" href="/auth/signup">Registrarse</a>
+          <a class="item" href="/auth/signin">Iniciar Sesión</a>
+          <%}%>
+        <%if (estaAutentificado){%>
+          <div class="ui simple dropdown item">
+                <%=user.nombre%>
+                  <i class="dropdown icon"></i>
+                  <div class="menu">
+                    <a class="item" href="/users/panel"><i class="edit icon"></i> Perfil</a>
+                    <a class="item" href="/auth/logout"><i class="globe icon"></i> Cerrar Sesión</a>
+                  </div>
+          </div>
+        <%}%>
+      </div>
+    </div>
+  </div>
+</nav>

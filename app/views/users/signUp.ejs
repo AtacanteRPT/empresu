@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>EMPRESU</title>
+    <% include ../partes/imports%>
+
+</head>
+
+<body>
+    <% include ../partes/header %>
+    <br>
+    <br>
+    <br>
+   <div class="ui text container ">
+        <form class="ui form " method="POST">
+             <h4 class="ui dividing header">Registrarse</h4>
+            <div class="field">
+                <label>Nombre</label>
+                <input type="text" name="nombre" placeholder="Nombre Completo">
+            </div>
+             <div class="field">
+                <label>Telefono</label>
+                <input type="number" name="telefono" placeholder="Telefono de contacto">
+            </div>
+            <div class="field">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Correo">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="password">
+            </div>
+            <button class="ui button" type="submit">Submit</button>
+        </form>
+    </div>
+
+
+</body>
+
+</html>

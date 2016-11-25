@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>EMPRESU</title>
+
+  <% include ./partes/imports%>
+</head>
+
+<body>
+    <% include ./partes/header %>
+    <br>
+    <br>
+    <br>
+<div class="ui container ">
+<h1 class="ui header"><%= titulo %> 
+<div class="sub header">Bienvenido a <%= titulo %> !!!!</div>
+  
+<% if (estaAutentificado){%>
+<h2 class="ui header"> Bienvenido <%=user.nombre%></h2>
+<h2 class="ui header"> Bienvenido <%=user.correo%></h2>
+
+<%}%>
+</div>
+
+</body>
+
+</html>

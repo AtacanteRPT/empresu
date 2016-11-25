@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= subtitulo %>
+    </title>
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <script src="semantic/dist/semantic.min.js"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="ui menu">
+            <div class="ui container">
+                <a class="item"><i class="home icon"></i>Empresu</a>
+                <div class="right menu">
+                    <a class="item">Registrarse</a>
+                    <a class="item">Iniciar Sesión</a>
+                    <div class="ui simple dropdown item">
+                        More
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a class="item"><i class="edit icon"></i> Edit Profile</a>
+                            <a class="item"><i class="globe icon"></i> Choose Language</a>
+                            <a class="item"><i class="settings icon"></i> Account Settings</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h4>
+        <%=subtitulo%>
+    </h4>
+
+    <div class="ui text container ">
+
+        <div class="ui floating message">
+            <p>Se Ha Registrado Correctamente. YA PUEDE LOGEARSE!!</p>
+        </div>
+
+        <form class="ui form " method="POST">
+             <h4 class="ui dividing header">Registrarse</h4>
+            <div class="field">
+                <label>Email</label>
+                <input type="email" name="username" placeholder="Correo">
+            </div>
+            <div class="field">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="password">
+            </div>
+            <button class="ui button" type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="ui card">
+        <div class="image">
+            <img src="/images/matthew.png">
+        </div>
+        <div class="content">
+            <a class="header">Kristy</a>
+            <div class="meta">
+                <span class="date">Joined in 2013</span>
+            </div>
+            <div class="description">
+                Kristy is an art director living in New York.
+            </div>
+        </div>
+        <div class="extra content">
+            <a>
+                <i class="user icon"></i> 22 Friends
+            </a>
+        </div>
+    </div>
+    <form action="" method='POST'>
+        <input type="number" name='id' placeholder="id">
+        <input type="text" name='nombre' placeholder="nombre ">
+        <button type="submit">Adicionar </button>
+    </form>
+</body>
+
+</html>

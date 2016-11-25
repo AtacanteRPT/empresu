@@ -1,0 +1,34 @@
+
+<html>
+<head>
+   <% include ../partes/imports%>
+</head>
+<body>
+<% include ../partes/header %>
+<script>
+
+    function XD(prop){
+        cad="#Contenido"+prop;
+        if($(cad).hasClass("hidden")){
+            $(cad).removeClass("hidden"); 
+            $(cad).addClass("visible"); 
+        }else{
+            $(cad).removeClass("visible"); 
+            $(cad).addClass("hidden");
+        }
+    }
+</script>
+
+<div class="ui container">
+    <script>
+        Data={Prosupuestos:["Presupuesto de produccion", "Presupuesto de Compra", "Presupuesto de mano de obra", "Presupuesto de Costos Indirectos", "Presupuesto de costos de produccion", "Presupuesto de Gastos administrativos", "Presupuesto de investigacion y nuevos productos"]
+        , Monto:[1000,9874,12454,3468410,1545,15451,0]};
+        for(var i=0; i<Data.Prosupuestos.length; i++){
+            document.write("<div class='ui fluid card blue inverted'><div class='content'><div class='header' onclick='XD("+i+");'>"+Data.Prosupuestos[i]+"</div></div><div class='content transition hidden' id='Contenido"+i+"'><div class='ui three column very relaxed grid'><div class='column'><div class='ui simple dropdown item'><div class='text'>Empleados</div><i class='dropdown icon'></i><div class='menu'><div class='item'>Empleado 1</div><div class='item'>Empleado 2</div><div class='item'>Empleado ?</div><a  href ='AdiNuevoEmpleado' class='item'>Adicionar Nuevo</a></div></div></div><div class='column'><div class='ui label large'>Monto Total Gastado<div class='detail'><div class='blue'>"+Data.Monto[i]+"</div></div></div></div><div class='column'><button class='ui button blue'>Ver Estado</button></div></div></div></div>"
+            );
+        }
+    </script>
+    <a class="ui blue button" href="listaEmpleados">Lista de Empleados</a>
+</div>
+</body>
+</html>

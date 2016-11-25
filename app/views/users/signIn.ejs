@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>EMPRESU</title>
+    <% include ../partes/imports%>
+
+</head>
+
+<body>
+    <% include ../partes/header %>
+    <br>
+    <br>
+    <br>
+        <div class="ui text container ">
+            <%if (message.length > 0) { %>
+                <div class="ui floating message">
+                    <p>Se Ha Registrado Correctamente. YA PUEDE LOGEARSE!!</p>
+                </div>
+            <%}%>
+                <form class="ui form " method="POST">
+                        <h4 class="ui dividing header">Iniciar Sesión</h4>
+                        <div class="field">
+                            <label>Email</label>
+                            <input type="email" name="username" placeholder="Correo">
+                        </div>
+                        <div class="field">
+                            <label>Password</label>
+                            <input type="password" name="password" placeholder="password">
+                        </div>
+                        <button class="ui button" type="submit">Submit</button>
+                </form>
+                <%if (authmessage.length > 0) { %>
+                    <div class="ui negative message">
+                        <i class="close icon"></i>
+                        <div class="header">Error en el usuario o Contraseña </div>
+                        <p>En tu mente esta poder Recordar </p>
+                    </div>
+                <%}%>
+        </div>
+</body>
+
+</html>
