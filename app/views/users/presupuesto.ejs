@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Estados</title>
+    <% include ../partes/imports%>
+</head>
+
+<body>
+    <% include ../partes/header %>
+        <br>
+        <br>
+        <br>
+        <div class="ui container">
+            <h2>
+                <%=nombrePresupuesto[0].nombre %>
+            </h2>
+            <h2>controlador
+                <%=user.nombre %>
+            </h2>
+            <div>
+                <div class="ui labeled icon  menu">
+                    <a class="item">
+                        <i class="cloud download  icon"></i>
+                    </a>
+                    <a class="item">
+                        <i class="download icon"></i>
+                    </a>
+                    <a class="item">
+                        <i class="file pdf outline play icon"></i>
+                    </a>
+                    <a class="item">
+                        <i for="file" class="file excel outline icon"></i>
+                        <input type="file" id="file" style="display:none">
+                    </a>
+                    <a class="item">
+                        <i class="trash outline play icon"></i>
+                    </a>
+
+                </div>
+
+            </div>
+            <table class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>Descripcion </th>
+                        <th>Cantidad </th>
+                        <th>Monto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="ui ribbon label">First</div>
+                        </td>
+                        <td>datos X</td>
+                        <td>datos y</td>
+                    </tr>
+                    <tr>
+                        <td>datos z</td>
+                        <td>datos  g</td>
+                        <td>datos  j</td>
+                    </tr>
+                    <tr>
+                        <td>datos k </td>
+                        <td>datos  p </td>
+                        <td>datos  k</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="3">
+                            <div class="ui right floated pagination menu">
+                                <a class="icon item">
+                                    <i class="left chevron icon"></i>
+                                </a>
+                                <a class="item">1</a>
+                                <a class="item">2</a>
+                                <a class="item">3</a>
+                                <a class="item">4</a>
+                                <a class="icon item">
+                                    <i class="right chevron icon"></i>
+                                </a>
+                            </div>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div class="ui three cards">
+                <div class="card">
+                    <div class="content">
+                        <div class="header">Cantidad Total : 940</div>
+                        <div class="meta">
+                            <span>Ultima Modificacion </span>
+                            <a>Animals</a>
+                        </div>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="card">
+                <div class="content">
+                    <div class="header">Monto Total :1203 Bs</div>
+                    <div class="meta">
+                        <span>Ultima Modificacion </span>
+                        <a>Animals</a>
+                    </div>
+                    <p></p>
+                </div>
+                </div>
+            </div>
+
+        </div>
+
+
+</body>
+
+</html>

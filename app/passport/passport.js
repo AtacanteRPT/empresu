@@ -23,7 +23,6 @@ module.exports = function (passport) {
             }else {
                 if (rows.length > 0) {
                     var usuario = rows[0];
-                    console.log(usuario);
                     if (bcrypt.compareSync(password, usuario.password)) {
                         console.log('encontrado y existente');
                         return done(null, {

@@ -1,34 +1,119 @@
-
 <html>
+
 <head>
-   <% include ../partes/imports%>
+  <% include ../partes/imports%>
 </head>
+
 <body>
-<% include ../partes/header %>
-<script>
+  <% include ../partes/header %>
 
-    function XD(prop){
-        cad="#Contenido"+prop;
-        if($(cad).hasClass("hidden")){
-            $(cad).removeClass("hidden"); 
-            $(cad).addClass("visible"); 
-        }else{
-            $(cad).removeClass("visible"); 
-            $(cad).addClass("hidden");
-        }
-    }
-</script>
+    <div class="ui header container">
+      <h3 class="ui header">Se encuentra en la Temporada :
+        <%=presupuestos[0].nombreTemporada%>
+      </h3>
+      <div class="ui three cards">
+        <%for(var i = 0 ; i < presupuestos.length ; i++){%>
+          <div class=" teal card">
+            <div class="content">
+              <div class="header">
+                <%=presupuestos[i].nombre%>
+              </div>
+              <div class="meta">
+                <span class="category">somos Masistas</span>
+              </div>
+              <div class="description">
 
-<div class="ui container">
+              </div>
+            </div>
+            <div class="extra content">
+              <div class="ui icon top left pointing dropdown button">
+                <i class="wrench icon"></i>
+                <div class="menu">
+                  <div class="header">Empleados</div>
+                  <div class="item">
+                    <i class="dropdown icon"></i>
+                    <span class="text">Empleado X</span>
+                    <div class="menu">
+                      <div class="item">
+                        <i class="check icon"></i> Ver Perfil
+                      </div>
+                      <div class="item">
+                        <i class="close icon"></i> Eliminar
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ui divider"></div>
+                  <div onclick="adicionarEmpleado('<%=presupuestos[i].idPre%>','<%=idEmpr%>','<%=idTemp%>')" class=" ui button violet">Adicionar Empleado</div>
+                </div>
+              </div>
+              <div class="left floated ">
+                <a class="ui violet button" href="/users/panel/<%=idEmpr%>/<%=idTemp%>/<%=presupuestos[i].idPre%>">Accesar</a>
+              </div>
+
+              <div class="right floated author">
+                <img class="ui avatar image" src="/images/matt.jpg">
+                <%=user.nombre%>
+              </div>
+            </div>
+          </div>
+          <%}%>
+      </div>
+      <br>
+      <br>
+      <%if(presupuestos[0].tipo == 'Empleado'){ %>
+
+        <a href="#" class="ui button blue "> Lista De Empleados</a>
+        <%}%>
+          <!--MODAL adicionarEmpleado-->
+          <div class='ui   modal' id='adicionarEmpleado'>
+            <div class="ui header centered container">
+              <form class="ui form">
+                <div class="field">
+                  <label>Correo del Empleado </label>
+                  <input type="text" id='email' name="nombreTemporada" placeholder="Correo del Empleado a Añadir">
+                </div>
+                <div class="ui button blue " onclick="enviarDatos($('#email').val())">Enviar</div>
+              </form>
+            </div>
+          </div>
+
+    </div>
     <script>
-        Data={Prosupuestos:["Presupuesto de produccion", "Presupuesto de Compra", "Presupuesto de mano de obra", "Presupuesto de Costos Indirectos", "Presupuesto de costos de produccion", "Presupuesto de Gastos administrativos", "Presupuesto de investigacion y nuevos productos"]
-        , Monto:[1000,9874,12454,3468410,1545,15451,0]};
-        for(var i=0; i<Data.Prosupuestos.length; i++){
-            document.write("<div class='ui fluid card blue inverted'><div class='content'><div class='header' onclick='XD("+i+");'>"+Data.Prosupuestos[i]+"</div></div><div class='content transition hidden' id='Contenido"+i+"'><div class='ui three column very relaxed grid'><div class='column'><div class='ui simple dropdown item'><div class='text'>Empleados</div><i class='dropdown icon'></i><div class='menu'><div class='item'>Empleado 1</div><div class='item'>Empleado 2</div><div class='item'>Empleado ?</div><a  href ='AdiNuevoEmpleado' class='item'>Adicionar Nuevo</a></div></div></div><div class='column'><div class='ui label large'>Monto Total Gastado<div class='detail'><div class='blue'>"+Data.Monto[i]+"</div></div></div></div><div class='column'><button class='ui button blue'>Ver Estado</button></div></div></div></div>"
-            );
+    var idPre ;
+    var idTemp;
+    var idEmpr;
+      function adicionarEmpleado(idPreX,idEmprX,idTempX) {
+        idPre = idPreX;
+        idEmpr = idEmprX;
+        idTemp = idTempX;
+         $('#adicionarEmpleado').modal('show');
         }
+
+        function enviarDatos(email) {
+        var email = email;
+         var parametros = {
+                "idEmpr":idEmpr,
+                "idPre" : idPre,
+                "idTemp" : idTemp,
+                "correo" : email
+            };
+         $.ajax({
+                type: 'POST',
+                url: '/users/panel/temporada/adicionarEmpleado',
+                data:JSON.stringify(parametros),
+                contentType:"application/json; charset=utf-8",
+                traditional: true,
+                success: function(data) {
+                   window.location = data.redirect; 
+                },
+                error: function(jqXHR, textStatus, err) {
+                    alert('text status ' + textStatus + ', err ' + err)
+                }
+
+            });
+        }
+      $('.ui.dropdown').dropdown();
     </script>
-    <a class="ui blue button" href="listaEmpleados">Lista de Empleados</a>
-</div>
 </body>
+
 </html>

@@ -15,121 +15,92 @@
     <br>
     <br>
     <br>
+    
     <div class="ui container">
-      <!--****************************-->
-      <div class="ui two cards">
-          <%for (var i=0; i< empresas.length;i++){%>
-        <div class="card">
-          <div class="content">
-            <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
-            <div class="header"><%=empresas[i].nombre%> </div>
-            <div class="meta"><%=user.nombre%> </div>
-            <div class="description">Elliot requested permission to view your contact details </div>
-          </div>
-          <div class="extra content">
-                    <div class="ui two buttons">
-                      <form action="/verEmpresa" method="POST">
-                        <input type="number" class='invisible' name='idEmpr' value="<%=empresas[i].idEmpr%>"></input>
-                        <button class="ui basic green button">Accesar</button>
-                      </form>
-                      <form action="/eliminarEmpresa" method="POST">
-                        <input type="number" class='invisible' name='idEmpr' value="<%=empresas[i].idEmpr%>"></input>
-                        <button class="ui basic  red button" type="submit">Eliminar</button>
-                      </form>
-                    </div>
-                  </div>
-        </div>
-        <%}%>
-        <div class="card"> 
-  <div class="ui vertical animated button blue fluid adicionar-Empresa" tabindex="0">
-  <div class="hidden content">Adicionar Empresa</div>
-  <div class="visible content">
-    <i class="add square icon"></i>
-  </div>
-</div>
-        </div>
  
-         
-      </div>
-
-
-      <!--*************************-->
-      <!--<div class="ui stackable two column  very relaxed grid ">
-        <div class="one column">
-          <h3 class="ui header">Proyectos (Empresas)</h3>
-          <div class="ui one column centered grid">
-            <%for (var i=0; i< empresas.length;i++){%>
-              <div class="column">
-                <div class="ui fluid card ">
-                  <div class="content">
-                    <img class="right floated mini ui image" src="/images/avatar/large/elliot.jpg">
-                    <div class="header">
-                      <%=empresas[i].nombre%>
-                    </div>
-                    <div class="meta">
-                      <%=user.email%>
-                    </div>
-                    <div class="description">Elliot requested permission to view your contact details </div>
+      <div class="ui three cards">
+        <% for (var i=0; i< empresas.length;i++){%>
+          <div class=" teal card">
+            <div class="content">
+              <form class="right floated "action="/eliminarEmpresa" method="post">
+                <input type="number" id ='idEmpr<%=empresas[i].idEmpr%>' class='invisible' name='idEmpr' value="<%=empresas[i].idEmpr%>"></input>
+                <button type="submit" class="ui vertical animated red button" tabindex="0">
+                <div class="hidden content">Eliminar</div>
+                 <div class="visible content">
+                 <i class="close icon"></i>
                   </div>
-                  <div class="extra content">
-                    <div class="ui two buttons">
-                      <form action="/verEmpresa" method="POST">
-                        <input type="number" class='invisible' name='idEmpr' value="<%=empresas[i].idEmpr%>"></input>
-                        <button class="ui basic green button">Accesar</button>
-                      </form>
-                      <form action="/eliminarEmpresa" method="POST">
-                        <input type="number" class='invisible' name='idEmpr' value="<%=empresas[i].idEmpr%>"></input>
-                        <button class="ui basic  red button" type="submit">Eliminar</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-              <%}%>
-                <div class="column">
-                  <button class="ui primary basic button adicionar-Empresa">Adicionar Empresa</button>
-                </div>
-          </div>
-
-        </div>
-
-        <div class="one  column">
-          <h3 class="ui header">Temporadas </h3>
-          <div class="ui one column grid">
-            <div class="column">
-              <div class="ui fluid card ">
-                <div class="content">
-                  <img class="right floated mini ui image" src="/images/avatar/large/jenny.jpg">
-                  <div class="header">
-                    <%=user.nombre%>
-                  </div>
-                  <div class="meta">Usuario Master</div>
-                  <div class="description">Jenny wants to add you to the group <b>best friends</b> </div>
-                </div>
-                <div class="extra content">
-                  <div class="ui two buttons">
-
-                    <a class="ui basic green button" href='/users/panel/temporada'>Accesar Temporada </a>
-
-                    <button class="ui basic  red button">Eliminar</button>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="column">
-              <form action="">
-                <button class="ui primary basic button adicionar-Temporada">Adicionar Temporada</button>
+               </button>
               </form>
+              <div class="header">
+                <%=empresas[i].nomEmpr%>
+              </div>
+              <div class="description">
+                <h3> Usuario : <%=empresas[i].tipo%> :
+                  <%= user.nombre%>
+                </h3>
+                <p> Innova crea y Controla </p>
+              </div>
             </div>
-
+            <div class="extra content">
+              <h4 class="ui header">
+  
+  <i class="setting icon"></i>
+  <div class="content">
+    Temporadas
+    <div class="ui simple link dropdown">
+      <div class="text">Lista</div>
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="header">Lista de temporadas</div>
+        <%for(var j=0;j < empresas[i].temporadas.length;j++){%>
+          <div class="item">
+             <i class="dropdown icon"></i>
+             <%=empresas[i].temporadas[j].nombreTemporada%>
+            <div class="menu">
+             <div class="item"> 
+             <span class="description">GOOO</span>
+             <div onclick="entrarTemporada('<%=empresas[i].temporadas[j].idTemp%>',$('#idEmpr<%=empresas[i].idEmpr%>').val())"> accesar</div> 
+             </div>
+             <div class="divider"></div>
+             <div class="item"> 
+             <span class="description"><%=empresas[i].temporadas[j].fechaIni%></span>
+             fechaIncio : 
+             </div>
+             <div class="item">
+             <span class="description"><%=empresas[i].temporadas[j].fechaFin%></span>
+             fechaFin : 
+             </div>
+             <div class="item">
+              Eliminar Temporada
+             </div>
+           </div>
           </div>
+        <%}%>
+        
+        <div class="item">
+        <button class="ui blue button" onclick="realizaProceso($('#idEmpr<%=empresas[i].idEmpr%>').val())">Agregar Temporada</button>
+
         </div>
 
-
-      </div>-->
+      </div>
+    </div>
+  </div>
+</h4>
+            </div>
+          </div>
+          <%}%>
+          <div class="card">
+            <div class="content">
+              <div class="header">Crea un Proyecto</div>
+              <div class="description">
+                Presupuesta y Controla, y problemas Evita
+              </div>
+            </div>
+            <div class="ui bottom blue attached button adicionar-Empresa">
+              <i class="add icon"></i> Adicionar Empresa
+            </div>
+          </div>
+      </div>
     </div>
 
 
@@ -446,42 +417,92 @@
 
     <!--Modal Creacion de Temporada-->
     <div class='ui modal' id='crearTemporada'>
-      <div class="header">
-        <form action="/adicionarTemporada">
+      <div class="ui header container">
+        <form  class="ui form" >
           <div class="two fields">
             <div class="field">
               <label>Nombre de Temporada </label>
-              <div class="fields">
-                <div class="twelve wide field">
-                  <input type="text" name="direccion" placeholder="Nombre de la Temporada">
-                </div>
+              <div class="twelve wide field">
+                <input type="text" id='nombreTemporada' name="nombreTemporada" placeholder="Nombre de la Temporada">
               </div>
             </div>
             <div class="field">
-              <label>Descripcion </label>
-              <div class="fields">
-                <div class="twelve wide field">
-                  <input type="text" name="direccion" placeholder="Direccion de la empresa (Opcional)">
-                </div>
-              </div>
+              <label>Fecha Inicio </label>
+              <input type="date" id='fechaIni' name="fechaIni">
             </div>
-
+            <div class=" field">
+              <label>Fecha Fin </label>
+              <input type="date" id='fechaFin' name="fechaFin">
+            </div>
+           
+          </div>
+          <div class="ui button blue " onclick="enviarTemporada($('#nombreTemporada').val(),$('#fechaIni').val(),$('#fechaFin').val())">Enviar</div>
         </form>
-        </div>
       </div>
+    </div>
 
 
-      <script>
-      $(document).ready(function(){
-        
+    <script>
+    var idEmpr = '';
+        function realizaProceso(idEmpresa) {
+            idEmpr = idEmpresa;
+            console.log(idEmpr);
+           
+             $('#crearTemporada').modal('show');
+        }
+        function entrarTemporada(idTemporada , idEmpr) {
+          var parametros = {
+                "idTemp": idTemporada,
+                "idEmpr" : idEmpr
+            };
+             $.ajax({
+                type: 'POST',
+                url: '/users/panel/temporada',
+                data:JSON.stringify(parametros),
+                contentType:"application/json; charset=utf-8",
+                traditional: true,
+                success: function(data) {
+                   window.location = data.redirect; 
+                },
+                error: function(jqXHR, textStatus, err) {
+                    alert('text status ' + textStatus + ', err ' + err)
+                }
+
+            });
+
+        }
+        function enviarTemporada(nombre,fechaIni,fechaFin){
+          var parametros = {
+                "idEmpr":idEmpr,
+                "nombreTemporada": nombre,
+                "fechaIni": fechaIni,
+                "fechaFin" : fechaFin
+            };
+          $.ajax({
+                type: 'POST',
+                url: '/adicionarTemporada',
+                data:JSON.stringify(parametros),
+                contentType:"application/json; charset=utf-8",
+                traditional: true,
+                success: function(data) {
+                   $('#crearTemporada').modal('hide');
+                },
+                error: function(jqXHR, textStatus, err) {
+                    alert('text status ' + textStatus + ', err ' + err)
+                }
+
+            });
+        }
+    
+      $(document).ready(function() {
+          console.log('<%=user.correo%>');
       });
       $('.adicionar-Empresa').click(function() {
         $('#crearProyecto').modal('show');
       });
-
-      $('.dropdown').dropdown({
-        debug: true
-      });
+      $('.adicionar-Temporada').click(function() {
+        $('#crearTemporada').modal('show');
+      });      
       $('.ui.checkbox').checkbox({
         debug: true
       });
